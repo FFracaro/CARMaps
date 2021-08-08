@@ -8,6 +8,7 @@ TagManager:
   - UICamera
   - Map
   - PinText
+  - Draggable
   layers:
   - Default
   - TransparentFX

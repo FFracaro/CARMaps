@@ -19,32 +19,21 @@ public class TouchInputManager : MonoBehaviour
             if(EventSystem.current.IsPointerOverGameObject(0))
             {
                 Touch touch = Input.touches[0];
-                Vector3 pos = touch.position;
+                Vector2 pos = touch.position;
  
                 if(touch.phase == TouchPhase.Began)
                 {
-                    RaycastHit hit;
-                    Ray ray = Camera.main.ScreenPointToRay(pos); 
-                    if(Physics.Raycast(ray, out hit) && (hit.collider.tag == "Draggable"))
-                    {
+                    var layerMask = 1 << LayerMask.NameToLayer("UI");
 
+                    Vector3 touchposi = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    RaycastHit2D hit = Physics2D.Raycast(touchposi, Vector2.zero, 100, layerMask);
+
+                    if (hit && hit.collider != null)
+                    {
+                        Debug.Log("I'm hitting " + hit.collider.name);
                     }
                 }
             }
         }
     }
-    /*
-             if (Input.touchCount > 0) 
-         {
-             Touch touch = Input.GetTouch(0); // get first touch since touch count is greater than zero
-     
-             if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved) 
-             {
-                 // get the touch position from the screen touch to world point
-                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10));
-    // lerp and set the position of the current object to that of the touch, but smoothly over time.
-    transform.position = Vector3.Lerp(transform.position, touchedPos, Time.deltaTime);
-             }
-         }
-    */
 }
