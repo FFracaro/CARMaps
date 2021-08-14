@@ -29,6 +29,8 @@ public class PinEditorManager : MonoBehaviour
             if (PinNameInput.text != "PLACEHOLDER")
                 pinToEdit.SetPinName(PinNameInput.text);
 
+        PinNameInput.text = "";
+
         int PinColor = pinToEdit.GetPinColor();
 
         if(PinColorDropdown.value != PinColor)

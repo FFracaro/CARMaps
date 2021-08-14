@@ -4,23 +4,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Cinemachine;
 
-public class TouchInputPinMovement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragCameraMap : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    Camera mainCamera;
+    [SerializeField]
+    CinemachineVirtualCamera VirtualCam;
 
+    [SerializeField]
+    Camera PinCam;
+
+    Camera mainCamera;
     float zAxis = 0;
     Vector3 clickOffset = Vector3.zero;
-
-    [SerializeField]
-    GameObject _pin;
-
-    [SerializeField]
-    TouchInputManager TouchManager;
 
     // Use this for initialization
     void Start()
     {
-        TouchManager = FindObjectOfType<TouchInputManager>();
         mainCamera = Camera.main;
         if (mainCamera.GetComponent<PhysicsRaycaster>() == null)
             mainCamera.gameObject.AddComponent<PhysicsRaycaster>();
@@ -28,11 +26,9 @@ public class TouchInputPinMovement : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        zAxis = _pin.transform.position.z;
-        clickOffset = _pin.transform.position - mainCamera.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, zAxis)) + new Vector3(0, 1, 0);
-        _pin.transform.position = new Vector3(_pin.transform.position.x, _pin.transform.position.y, zAxis);
-
-        TouchManager.IsPinBeingDragged(true);
+        zAxis = VirtualCam.transform.position.z;       
+        clickOffset = VirtualCam.transform.position - mainCamera.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, zAxis)) + new Vector3(0, 20, 0);
+        VirtualCam.transform.position = new Vector3(VirtualCam.transform.position.x, VirtualCam.transform.position.y, zAxis);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -40,18 +36,13 @@ public class TouchInputPinMovement : MonoBehaviour, IBeginDragHandler, IDragHand
         //Use Offset To Prevent Sprite from Jumping to where the finger is
         Vector3 tempVec = mainCamera.ScreenToWorldPoint(eventData.position) + clickOffset;
         tempVec.z = zAxis; //Make sure that the z zxis never change
-
-
-        _pin.transform.position = tempVec;
+        VirtualCam.transform.position = tempVec;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        GetComponentInParent<PinInfo>().UpdatePinLocations(_pin.transform.localPosition, _pin.transform.position);
-        zAxis = _pin.transform.position.z;
-        _pin.transform.position = new Vector3(_pin.transform.position.x, _pin.transform.position.y, zAxis);
-
-        TouchManager.IsPinBeingDragged(false);
+        zAxis = VirtualCam.transform.position.z;
+        VirtualCam.transform.position = new Vector3(VirtualCam.transform.position.x, VirtualCam.transform.position.y, zAxis);
     }
 
     //Add Event System to the Camera

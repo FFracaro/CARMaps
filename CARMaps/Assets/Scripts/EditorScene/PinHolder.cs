@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PinHolder : MonoBehaviour
 {
+    GameObject PinMap;
+    GameObject PinAR;
+
     PinInfo[] PinInformation;
 
     public void KeepAlivePinInformation()
@@ -17,6 +20,31 @@ public class PinHolder : MonoBehaviour
         {
             PinInformation = FindObjectsOfType<PinInfo>();
         }
+    }
+
+    private void PinTransfer()
+    {
+
+    }
+
+    public void CreateDefaultPinAtParent(Vector3 pos)
+    {
+
+    }
+
+    public void CreateDefaultNewPinAR(Vector3 pos)
+    {
+
+    }
+
+    public void RecreatePinAR(PinInfo pinInfo)
+    {
+
+    }
+
+    public void RecreatePinEditor(PinInfo pinInfo)
+    {
+
     }
 
     public void DestroyPinInfo()

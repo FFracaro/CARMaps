@@ -8,6 +8,11 @@ public class TouchInputPinEdit : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     GameObject EditCanvas;
 
+    private void Start()
+    {
+        EditCanvas = FindObjectOfType<ReferenceHolder>().GetEditCanvasReference();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if(!EditCanvas.activeSelf)
