@@ -7,6 +7,8 @@ public class AppInfoHolder : MonoBehaviour
     [SerializeField]
     string SceneName;
 
+    private List<Pin> Pins;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -25,5 +27,15 @@ public class AppInfoHolder : MonoBehaviour
     public void DestroyInfoHolder()
     {
         Destroy(this);
+    }
+
+    public void SetPinList(List<Pin> pins)
+    {
+        Pins = pins;
+    }
+
+    public List<Pin> GetPinList()
+    {
+        return Pins;
     }
 }

@@ -9,6 +9,9 @@ public class TouchInputPin : MonoBehaviour, IPointerClickHandler
     GameObject PinText;
 
     [SerializeField]
+    bool HasExtraButtons = false;
+
+    [SerializeField]
     GameObject PinButtons;
 
     public void OnPointerClick(PointerEventData eventData)
@@ -16,12 +19,14 @@ public class TouchInputPin : MonoBehaviour, IPointerClickHandler
         if(PinText.activeSelf)
         {
             PinText.SetActive(false);
-            PinButtons.SetActive(false);
+            if(HasExtraButtons)
+                PinButtons.SetActive(false);
         }
         else
         {
             PinText.SetActive(true);
-            PinButtons.SetActive(true);
+            if(HasExtraButtons)
+                PinButtons.SetActive(true);
         }
 
         Debug.Log("Clicked PIN: " + eventData.pointerCurrentRaycast.gameObject.name);

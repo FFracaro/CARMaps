@@ -9,6 +9,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
     [RequireComponent(typeof(ARRaycastManager))]
     public class PlaceMultipleObjectsOnPlane : MonoBehaviour
     {
+        bool WasContentAddedToScene = false;
+
         [SerializeField]
         [Tooltip("Instantiates this prefab on a plane at the touch location.")]
         GameObject m_PlacedPrefab;
@@ -43,7 +45,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void Update()
         {
-            if(spawnedObject == null)
+            if(!WasContentAddedToScene)
             {
                 if (Input.touchCount > 0)
                 {
@@ -55,12 +57,19 @@ namespace UnityEngine.XR.ARFoundation.Samples
                         {
                             Pose hitPose = s_Hits[0].pose;
 
-                            spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+                            GetComponent<ARSessionOrigin>().MakeContentAppearAt(m_PlacedPrefab.transform, hitPose.position, hitPose.rotation);
+
+                            m_PlacedPrefab.transform.GetChild(0).gameObject.SetActive(true);
+                            m_PlacedPrefab.transform.GetChild(1).gameObject.SetActive(true);
+
+                            //spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
 
                             if (onPlacedObject != null)
                             {
                                 onPlacedObject();
                             }
+
+                            WasContentAddedToScene = true;
                         }
                     }
                 }

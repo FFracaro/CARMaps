@@ -9,10 +9,10 @@ public class PinInfo : MonoBehaviour
     TMP_Text PinName;
 
     [SerializeField]
-    Vector3 PinLocalPosition = Vector3.zero;
+    Vector3 PinLocalPosition;
 
     [SerializeField]
-    Vector3 PinWorldPosition = Vector3.zero;
+    Vector3 PinWorldPosition;
 
     // 0 branco, 1 azul, 2 laranja, 3 rosa, 4 amarelo, 5 verde
     [SerializeField]
@@ -27,6 +27,11 @@ public class PinInfo : MonoBehaviour
     {
         PinLocalPosition = transform.localPosition;
         PinWorldPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        Debug.Log(PinLocalPosition);
     }
 
     public void ChancePinSprite(int color)
@@ -78,5 +83,10 @@ public class PinInfo : MonoBehaviour
     public int GetPinColor()
     {
         return this.PinColor;
+    }
+
+    public void UpdatePinSprite(int color)
+    {
+        PinSpriteRenderer.sprite = PinMainSprites[color];
     }
 }

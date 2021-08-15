@@ -661,6 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PinText: {fileID: 6519712050785677717}
+  HasExtraButtons: 1
   PinButtons: {fileID: 6519712051894350024}
 --- !u!1 &6519712051894350024
 GameObject:
