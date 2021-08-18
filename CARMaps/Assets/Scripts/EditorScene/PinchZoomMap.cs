@@ -7,16 +7,16 @@ using Cinemachine;
 public class PinchZoomMap : MonoBehaviour
 {
     [SerializeField]
-    float MaxZoom = 1050f;
+    float MaxZoom = 0.55f;
 
     [SerializeField]
-    float MinZoom = 450f;
+    float MinZoom = 0.2f;
 
     [SerializeField]
-    float ZoomAmount = 30f;
+    float ZoomAmount = 0.3f;
 
     [SerializeField]
-    float ZoomSpeed = 5;
+    float ZoomSpeed = 0.1f;
 
     [SerializeField]
     Camera PinCam;

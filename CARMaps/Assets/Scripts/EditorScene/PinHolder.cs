@@ -21,13 +21,12 @@ public class PinHolder : MonoBehaviour
         if(AppInfo.GetSceneName() == "MapEditor")
         {
             EditorScene = true;
+            LoadPinsFromMemory();
         }
         else
         {
             EditorScene = false;
-        }
-
-        LoadPinsFromMemory();
+        }    
     }
 
     public void AddNextSceneName(string scene)
@@ -83,7 +82,7 @@ public class PinHolder : MonoBehaviour
     {
         PinInfo info;
 
-        Debug.Log("LOCAL CREATE " + new System.Numerics.Vector3(p.GetPinLocalPosition()[0], p.GetPinLocalPosition()[1], p.GetPinLocalPosition()[2]));
+        //Debug.Log("LOCAL CREATE " + new System.Numerics.Vector3(p.GetPinLocalPosition()[0], p.GetPinLocalPosition()[1], p.GetPinLocalPosition()[2]));
 
         GameObject go = Instantiate(pinToInstantiate, new UnityEngine.Vector3(p.GetPinLocalPosition()[0], p.GetPinLocalPosition()[1], p.GetPinLocalPosition()[2]), UnityEngine.Quaternion.identity) as GameObject;
         go.transform.SetParent(target.transform);
@@ -120,7 +119,7 @@ public class PinHolder : MonoBehaviour
             p.SetPinColor(pin.GetPinColor());
             p.SetPinLocalPosition(pin.GetPinLocalPosition().x, pin.GetPinLocalPosition().y, pin.GetPinLocalPosition().z);
 
-            Debug.Log("LOCAL SAVING " + new System.Numerics.Vector3(pin.GetPinLocalPosition().x, pin.GetPinLocalPosition().y, pin.GetPinLocalPosition().z));
+            //Debug.Log("LOCAL SAVING " + new System.Numerics.Vector3(pin.GetPinLocalPosition().x, pin.GetPinLocalPosition().y, pin.GetPinLocalPosition().z));
             p.SetPinWorldPosition(pin.GetPinWorldPosition().x, pin.GetPinWorldPosition().y, pin.GetPinWorldPosition().z);
 
             pins.Add(p);

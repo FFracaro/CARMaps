@@ -55,25 +55,6 @@ public class TouchInputManager : MonoBehaviour
                 }
             }
         }
-
-        /*
-        if (Touch.activeFingers.Count == 1)
-        {
-            if(!EventSystem.current.IsPointerOverGameObject(Touch.activeTouches[0].touchId))
-            {
-                if(!IsDragIconOn)
-                {
-                    if(AddingNewPin)
-                    {
-                        InstantiatePin(Touch.activeTouches[0]);
-                    }
-                    else
-                    {
-                        MoveCamera(Touch.activeTouches[0]);
-                    }
-                }
-            }
-        }*/
     }
 
     IEnumerator InstantiatePin()
@@ -87,7 +68,7 @@ public class TouchInputManager : MonoBehaviour
                 if (!EventSystem.current.IsPointerOverGameObject(Touch.activeTouches[0].touchId))
                 {
                     //Instantiate Object
-                    GameObject go = Instantiate(Pin, Camera.main.ScreenToWorldPoint(new Vector3 (Touch.activeTouches[0].screenPosition.x, Touch.activeTouches[0].screenPosition.y, 2048)), Quaternion.identity) as GameObject;
+                    GameObject go = Instantiate(Pin, Camera.main.ScreenToWorldPoint(new Vector3 (Touch.activeTouches[0].screenPosition.x, Touch.activeTouches[0].screenPosition.y, 0.506f)), Quaternion.identity) as GameObject;
                     // Tranform as child
 
                     go.transform.SetParent(GameObject.Find("Pins").transform);

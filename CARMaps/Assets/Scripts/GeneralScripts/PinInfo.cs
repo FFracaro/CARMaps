@@ -32,6 +32,7 @@ public class PinInfo : MonoBehaviour
     private void Update()
     {
         Debug.Log(PinLocalPosition);
+        Debug.Log(PinWorldPosition);
     }
 
     public void ChancePinSprite(int color)

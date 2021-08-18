@@ -38,9 +38,16 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
+        PinHolder Pins;
+
         void Awake()
         {
             m_RaycastManager = GetComponent<ARRaycastManager>();
+        }
+
+        private void Start()
+        {
+            Pins = FindObjectOfType<PinHolder>();
         }
 
         void Update()
@@ -57,12 +64,10 @@ namespace UnityEngine.XR.ARFoundation.Samples
                         {
                             Pose hitPose = s_Hits[0].pose;
 
-                            GetComponent<ARSessionOrigin>().MakeContentAppearAt(m_PlacedPrefab.transform, hitPose.position, hitPose.rotation);
-
-                            m_PlacedPrefab.transform.GetChild(0).gameObject.SetActive(true);
-                            m_PlacedPrefab.transform.GetChild(1).gameObject.SetActive(true);
-
+                            FindObjectOfType<ARSessionOrigin>().MakeContentAppearAt(m_PlacedPrefab.transform, hitPose.position, hitPose.rotation);
                             //spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+
+                            Pins.LoadPinsFromMemory();
 
                             if (onPlacedObject != null)
                             {

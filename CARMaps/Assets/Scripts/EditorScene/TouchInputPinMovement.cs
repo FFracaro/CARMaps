@@ -14,7 +14,6 @@ public class TouchInputPinMovement : MonoBehaviour, IBeginDragHandler, IDragHand
     [SerializeField]
     GameObject _pin;
 
-    [SerializeField]
     TouchInputManager TouchManager;
 
     // Use this for initialization
@@ -29,7 +28,7 @@ public class TouchInputPinMovement : MonoBehaviour, IBeginDragHandler, IDragHand
     public void OnBeginDrag(PointerEventData eventData)
     {
         zAxis = _pin.transform.position.z;
-        clickOffset = _pin.transform.position - mainCamera.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, zAxis)) + new Vector3(0, 1, 0);
+        clickOffset = _pin.transform.position - mainCamera.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, zAxis)) + new Vector3(0, 0.001f, 0);
         _pin.transform.position = new Vector3(_pin.transform.position.x, _pin.transform.position.y, zAxis);
 
         TouchManager.IsPinBeingDragged(true);
