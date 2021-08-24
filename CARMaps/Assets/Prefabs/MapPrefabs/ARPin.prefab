@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6485775188025312760}
   - component: {fileID: 6485775188025312762}
   - component: {fileID: 6485775188025312763}
-  - component: {fileID: 6485775188025312757}
   m_Layer: 5
   m_Name: PinSprite
   m_TagString: Pin
@@ -95,23 +94,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5000002, y: 1.5000002, z: 12}
-  m_Center: {x: 0, y: 0, z: 0.6}
---- !u!114 &6485775188025312757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6485775188025312761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 178238708265cc34e9a69abf7cb82970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PinText: {fileID: 6485775188717519972}
-  HasExtraButtons: 0
-  PinButtons: {fileID: 0}
+  m_Size: {x: 1.769277, y: 1.8441336, z: 58.369778}
+  m_Center: {x: -0.016829904, y: 0.06321498, z: 5.2004247}
 --- !u!1 &6485775188448364541
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6485775188639789406}
   - component: {fileID: 6485775188639789401}
+  - component: {fileID: 4772813237958677676}
   m_Layer: 5
   m_Name: ARPin
   m_TagString: Pin
@@ -344,6 +329,49 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e982feed6c0fdf24fabfb069e21c4934, type: 3}
   - {fileID: 21300000, guid: 4817671cde472874999e85cefed0487d, type: 3}
   - {fileID: 21300000, guid: 35e18c4d97b945847bcfb005c5659b66, type: 3}
+--- !u!114 &4772813237958677676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485775188639789407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c670bfa55d621474ea22ff77c1820163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 32
+  m_OnFirstHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExit:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CustomReticle: {fileID: 0}
+  m_SelectionVisualization: {fileID: 6485775188717519972}
 --- !u!1 &6485775188717519972
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,11 +385,11 @@ GameObject:
   - component: {fileID: 6485775188717519974}
   m_Layer: 5
   m_Name: TextBox
-  m_TagString: Untagged
+  m_TagString: Pin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6485775188717519975
 Transform:
   m_ObjectHideFlags: 0

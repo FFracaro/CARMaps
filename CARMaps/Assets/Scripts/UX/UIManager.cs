@@ -6,6 +6,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
 {
     public class UIManager : MonoBehaviour
     {
+
+        public ARSceneUI ARUI;
+
         [SerializeField]
         [Tooltip("The ARCameraManager which will produce frame events.")]
         ARCameraManager m_CameraManager;
@@ -72,7 +75,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
             if (m_CameraManager != null)
                 m_CameraManager.frameReceived += FrameChanged;
 
-            PlaceMultipleObjectsOnPlane.onPlacedObject += PlacedObject;
+            PlaceObjectOnPlane.onPlacedObject += PlacedObject;
         }
 
         void OnDisable()
@@ -80,21 +83,29 @@ namespace UnityEngine.XR.ARFoundation.Samples
             if (m_CameraManager != null)
                 m_CameraManager.frameReceived -= FrameChanged;
 
-            PlaceMultipleObjectsOnPlane.onPlacedObject -= PlacedObject;
+            PlaceObjectOnPlane.onPlacedObject -= PlacedObject;
+        }
+
+        private void Start()
+        {
+            moveDeviceAnimation.SetTrigger("StartMoveDevice");
         }
 
         void FrameChanged(ARCameraFrameEventArgs args)
         {
-            if (PlanesFound() && m_ShowingMoveDevice)
+            if(!ARUI.IsObjectPlaced())
             {
-                if (moveDeviceAnimation)
-                    moveDeviceAnimation.SetTrigger(k_FadeOffAnim);
+                if (PlanesFound() && m_ShowingMoveDevice)
+                {
+                    if (moveDeviceAnimation)
+                        moveDeviceAnimation.SetTrigger(k_FadeOffAnim);
 
-                if (tapToPlaceAnimation)
-                    tapToPlaceAnimation.SetTrigger(k_FadeOnAnim);
+                    if (tapToPlaceAnimation)
+                        tapToPlaceAnimation.SetTrigger(k_FadeOnAnim);
 
-                m_ShowingTapToPlace = true;
-                m_ShowingMoveDevice = false;
+                    m_ShowingTapToPlace = true;
+                    m_ShowingMoveDevice = false;
+                }
             }
         }
 
@@ -115,6 +126,19 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
                 m_ShowingTapToPlace = false;
             }
+
+            ARUI.SetIsObjectPlaced(true);
+        }
+
+        public void ResetAnimations()
+        {
+
+            tapToPlaceAnimation.SetTrigger(k_FadeOnAnim);
+
+            m_ShowingMoveDevice = true;
+
+            m_ShowingTapToPlace = false;
+
         }
     }
 }

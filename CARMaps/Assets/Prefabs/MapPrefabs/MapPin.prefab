@@ -403,7 +403,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bf4653a28f1d61641b85c57455f0d462, type: 3}
+  m_Sprite: {fileID: -715392506728605010, guid: 7a18b8c50894ef947b8fedfe8d98a6d4,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -440,7 +441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pin: {fileID: 6519712050695865518}
-  TouchManager: {fileID: 0}
 --- !u!1 &6519712051631819366
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +514,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bf4653a28f1d61641b85c57455f0d462, type: 3}
+  m_Sprite: {fileID: -7561670288432514346, guid: 4badf5c45011a084e87d2c36a85c1a97,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
